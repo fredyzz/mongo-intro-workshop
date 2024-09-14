@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// 1. Define user schema
 const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -28,6 +29,24 @@ const userSchema = new mongoose.Schema({
     city: String,
     State: String,
   },
+  // 1.1 Define the relationship between user and school
+  school: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "school",
+  },
 });
 
-module.exports = mongoose.model("user", userSchema);
+// 2. Define school schema
+const schoolSchema = new mongoose.Schema({
+  other: Boolean,
+  street: String,
+  houseNumber: Number,
+  zip: Number,
+  city: String,
+  State: String,
+});
+
+const User = mongoose.model("user", userSchema);
+const School = mongoose.model("school", schoolSchema);
+
+module.exports = { User, School };
