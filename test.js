@@ -8,7 +8,19 @@ const connect = () => {
 
 // 1. Define the schema
 const studentSchema = new mongoose.Schema({
-  firstName: String,
+  firstName: {
+    type: String,
+    required: true,
+  },
+  favBooks: [{ type: string }],
+  info: {
+    school: {
+      type: String,
+    },
+    level: {
+      type: Number,
+    },
+  },
 });
 
 // 2. Define the model - with this model mongo will create a collection called "student"
