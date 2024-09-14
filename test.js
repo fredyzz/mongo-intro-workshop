@@ -12,7 +12,7 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  favBooks: [{ type: string }],
+  favBooks: [{ type: String }],
   info: {
     school: {
       type: String,
@@ -30,10 +30,11 @@ async function main() {
   try {
     // 3. Connect to the database
     const connection = await connect();
-    console.log("Connected to the database", { connection });
+    // console.log(connection);
+    console.log("Connected to the database");
 
     // 4. Create a new student in ddbb
-    const student = await Student.create({ firstName: "John" });
+    const student = await Student.create({ firstName: "Tom" });
     console.log(student);
   } catch (e) {
     console.log(e);
